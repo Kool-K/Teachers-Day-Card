@@ -1,0 +1,526 @@
+/* --- Global & Base Styles --- */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+    color: #f8f3e6;
+    background: #2d1b1b;
+}
+
+/* --- Enhanced Background --- */
+.scene {
+    height: 100%;
+    background: linear-gradient(135deg, #3a2222 0%, #2d1b1b 50%, #1f1212 100%);
+    position: relative;
+    box-shadow: inset 0 0 150px rgba(0,0,0,0.7);
+    overflow: hidden;
+}
+
+.scene::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(123, 88, 88, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(94, 58, 58, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 40% 80%, rgba(149, 97, 97, 0.1) 0%, transparent 40%);
+    z-index: 0;
+}
+
+.scene::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%235a3c2a' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+    z-index: 0;
+    animation: subtleBackground 120s linear infinite;
+}
+
+@keyframes subtleBackground {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 100%; }
+}
+
+/* The wrapper handles scaling and centering */
+.wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1000px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 2;
+}
+
+.header-content {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    color: #f0e6d2;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+    margin-bottom: 10px;
+    font-size: 3em;
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #c9a66a, transparent);
+}
+
+.subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: #d6c6a5;
+    font-size: 1.2em;
+    margin-top: 15px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* --- Bookshelf Layout --- */
+.bookshelf-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.bookshelf {
+    display: flex;
+    align-items: flex-end;
+    gap: 15px;
+    position: relative;
+    transform-style: preserve-3d;
+    z-index: 1;
+}
+
+.shelf-base {
+    width: 750px;
+    height: 25px;
+    background: linear-gradient(to bottom, #5a3c2a, #4a2c1a);
+    border-radius: 5px;
+    box-shadow: 
+        0 15px 25px rgba(0,0,0,0.6),
+        inset 0 2px 3px rgba(255,255,255,0.1),
+        inset 0 -2px 5px rgba(0,0,0,0.5);
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+}
+
+.shelf-base::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    right: 10px;
+    height: 5px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 3px;
+}
+
+/* --- Book Styling --- */
+.book {
+    width: 40px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.5s ease, opacity 0.5s ease;
+    cursor: pointer;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+}
+
+.book:hover {
+    transform: translateY(-15px) rotateZ(-2deg);
+}
+
+.bookshelf.has-open-book .book:not(.open) {
+    filter: blur(2px);
+    opacity: 0.6;
+    transform: translateX(0);
+}
+
+.spacer-book {
+    width: 20px;
+    height: 180px;
+    opacity: 0.8;
+    box-shadow: none;
+}
+
+.spacer-book .book-cover {
+    filter: brightness(0.9);
+}
+
+/* --- Parts of The Book --- */
+.book-front, .book-back, .book-spine, .book-pages {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+}
+
+.book-front {
+    transform-origin: left;
+    transition: transform 1s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+    transform: translateZ(20px);
+}
+
+.book-cover {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--book-color) 0%, color-mix(in srgb, var(--book-color), black 20%) 100%);
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 2px 5px 5px 2px;
+    color: white;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    box-shadow: inset 2px 0 5px rgba(255,255,255,0.3);
+}
+
+.book-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 3em;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    margin: 0;
+    padding: 5px 0;
+    font-weight: 700;
+}
+
+.book-back {
+    transform: translateZ(-20px) rotateY(180deg);
+    background: linear-gradient(135deg, var(--book-color) 0%, color-mix(in srgb, var(--book-color), black 20%) 100%);
+    border: 2px solid rgba(255,255,255,0.2);
+}
+
+.book-spine {
+    width: 40px;
+    background: linear-gradient(to right, 
+        color-mix(in srgb, var(--book-color), black 30%) 0%, 
+        var(--book-color) 50%,
+        color-mix(in srgb, var(--book-color), black 30%) 100%);
+    transform: rotateY(-90deg) translateX(-20px);
+    transform-origin: left;
+    border: 2px solid rgba(0,0,0,0.2);
+    box-shadow: inset 2px 0 5px rgba(255,255,255,0.1);
+}
+
+/* --- Pages & Content --- */
+.book-pages {
+    width: 180px; 
+    height: 190px;
+    top: 5px;
+    left: 38px;
+    background: #f8f6f0;
+    transform: translateZ(19px) translateX(1px);
+    color: #444;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.5s, width 0.8s ease-in-out, height 0.8s ease-in-out;
+    border-radius: 0 5px 5px 0;
+    box-shadow: 
+        inset 5px 0 10px rgba(0,0,0,0.1),
+        2px 0 5px rgba(0,0,0,0.2);
+}
+
+.book-pages::before, .book-pages::after {
+    content: '';
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background: #f8f6f0;
+    border-radius: 0 5px 5px 0;
+    z-index: -1;
+}
+
+.book-pages::before { 
+    transform: translateX(-2px) translateY(1px); 
+    background: #f0ede4; 
+}
+
+.book-pages::after { 
+    transform: translateX(-4px) translateY(2px); 
+    background: #e8e5db; 
+}
+
+.book-pages::-webkit-scrollbar { 
+    display: none; 
+}
+
+.book-pages { 
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+}
+
+.page-content {
+    padding: 25px;
+    background-image: 
+        linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.page-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8em;
+    color: #2d1b1b;
+    margin-top: 0;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+.page-content h2::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #c9a66a, transparent);
+}
+
+.page-content p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.page-content span {
+    display: block;
+    font-family: 'Dancing Script', cursive; 
+    font-size: 2em;
+    margin-top: 20px;
+    text-align: right;
+    color: #7d5d3b;
+}
+
+/* --- The OPEN State --- */
+.book.open {
+    transform: translateX(120px) translateY(-80px) translateZ(200px) rotateY(-40deg);
+    z-index: 10;
+}
+
+.book.open .book-front {
+    transform: translateZ(20px) rotateY(-170deg);
+}
+
+.book.open .book-pages {
+    opacity: 1;
+    transition-delay: 0.5s;
+    width: 240px;
+    height: 280px;
+    overflow-y: auto;
+}
+
+/* --- Personal Note Feature Styles --- */
+.personal-note-trigger {
+    color: #d6c6a5;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3em;
+    cursor: pointer;
+    padding: 12px 25px;
+    border: 1px solid rgba(214, 198, 165, 0.4);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(90, 60, 42, 0.3);
+    backdrop-filter: blur(5px);
+    margin-top: 20px;
+    position: relative;
+    z-index: 5;
+}
+
+.personal-note-trigger:hover {
+    color: #f0e6d2;
+    background-color: rgba(90, 60, 42, 0.5);
+    border-color: rgba(240, 230, 210, 0.6);
+    box-shadow: 0 0 15px rgba(201, 166, 106, 0.3);
+    transform: translateY(-2px);
+}
+
+.personal-note-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.personal-note-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.personal-note-box {
+    background: #f8f6f0 url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z" fill="%239C92AC" fill-opacity="0.05" fill-rule="evenodd"/%3E%3C/svg%3E');
+    color: #333;
+    padding: 50px 60px;
+    border-radius: 8px;
+    max-width: 600px;
+    width: 80%;
+    box-shadow: 
+        0 15px 35px rgba(0,0,0,0.5),
+        inset 0 0 100px rgba(201, 166, 106, 0.2);
+    position: relative;
+    border: 1px solid rgba(201, 166, 106, 0.3);
+    transform: scale(0.9) translateY(20px);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.personal-note-overlay.active .personal-note-box {
+    transform: scale(1) translateY(0);
+}
+
+.personal-note-box::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+    border: 1px solid rgba(201, 166, 106, 0.2);
+    pointer-events: none;
+}
+
+.personal-note-box h2 {
+    font-family: 'Playfair Display', serif;
+    margin-top: 0;
+    color: #5a3c2a;
+    font-size: 2.2em;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.personal-note-box h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: #c9a66a;
+}
+
+.personal-note-box p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3em;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.personal-note-box .signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2em;
+    display: block;
+    text-align: right;
+    margin-top: 30px;
+    color: #5a3c2a;
+}
+
+.close-note-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2.5em;
+    color: #aaa;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s ease;
+    font-family: sans-serif;
+}
+
+.close-note-btn:hover {
+    color: #5a3c2a;
+}
+
+/* --- Responsiveness: Force Landscape on Phones --- */
+@media screen and (max-width: 768px) and (orientation: portrait) {
+    body::before {
+        content: "Please rotate your device to landscape for the best experience!";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #2d1b1b;
+        color: #f0e6d2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5em;
+        text-align: center;
+        z-index: 9999;
+        padding: 20px;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .scene {
+        display: none;
+    }
+}
+
+/* Responsive adjustments */
+@media screen and (max-height: 700px) {
+    .wrapper {
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    
+    .personal-note-trigger {
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .wrapper {
+        width: 90%;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+}
